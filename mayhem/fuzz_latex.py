@@ -22,8 +22,8 @@ def TestOneInput(data):
             MissingSuperScriptOrSubscriptError, DoubleSubscriptsError, InvalidStyleForGenfracError, InvalidAlignmentError, InvalidWidthError,
             LimitsMustFollowMathOperatorError):
         return -1
-    except StopIteration:
-        if ctr > 1000:
+    except (StopIteration, ValueError):
+        if ctr > 100:
             raise
         return -1
 def main():
