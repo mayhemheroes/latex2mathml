@@ -10,14 +10,10 @@ from latex2mathml.exceptions import NoAvailableTokensError, MissingEndError, Num
 with atheris.instrument_imports():
     import latex2mathml.converter
 
-ctr = 0
 def TestOneInput(data):
-    fdp = fuzz_helpers.EnhancedFuzzedDataProvider(data)
-    global ctr
-    ctr += 1
+    #fdp = fuzz_helpers.EnhancedFuzzedDataProvider(data)
     try:
-        latex_input = fdp.ConsumeRemainingString()
-        latex2mathml.converter.convert(latex_input)
+        latex2mathml.converter.convert(str(data, 'utf-8'))
     except (NoAvailableTokensError, MissingEndError, NumeratorNotFoundError, DenominatorNotFoundError, ExtraLeftOrMissingRightError,
             MissingSuperScriptOrSubscriptError, DoubleSubscriptsError, InvalidStyleForGenfracError, InvalidAlignmentError, InvalidWidthError,
             LimitsMustFollowMathOperatorError):
