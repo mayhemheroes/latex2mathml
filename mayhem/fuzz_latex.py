@@ -22,9 +22,7 @@ def TestOneInput(data):
             MissingSuperScriptOrSubscriptError, DoubleSubscriptsError, InvalidStyleForGenfracError, InvalidAlignmentError, InvalidWidthError,
             LimitsMustFollowMathOperatorError):
         return -1
-    except (StopIteration, ValueError):
-        if ctr > 100:
-            raise
+    except (Exception):
         return -1
 def main():
     atheris.Setup(sys.argv, TestOneInput)
